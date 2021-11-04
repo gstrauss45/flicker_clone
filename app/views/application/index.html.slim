@@ -1,0 +1,37 @@
+= link_to 'My Profile', user_path(current_user.id)
+br
+- @images.each do |image|
+  - if image.image.attached?
+    = image_tag image.image
+  br
+  - if current_user.email == image.email
+    = link_to image.title, image
+  - else
+    = image.title
+  br
+  - if current_user.email != image.email
+    = link_to 'favourite', favourite_path(id: image.id)
+  br
+  = link_to 'Add tag', new_tag_path(id: image.id)
+  br
+  |Tags:
+  br
+  - image.users.each do |tag|
+    = tag.email
+    | :
+    = link_to 'edit', edit_tag_path(id: image.id, t_id: tag.id)
+    | :
+    = link_to 'destroy', tag_path(:id => tag.id), method: :delete, data: { confirm: "Are you sure?" }, class: "header_delete"
+    br
+  = link_to 'Add Comment', new_comment_path(id: image.id)
+  br
+  |Comments:
+  br
+  - image.comments.each do |comment|
+    =comment.comment
+    = link_to 'Edit', edit_comment_path(id: comment.id)
+    | :
+    = link_to 'destroy', comment_path(:id => comment.id), method: :delete, data: { confirm: "Are you sure?" }, class: "header_delete"
+    br
+br
+= link_to "upload an image", new_image_path

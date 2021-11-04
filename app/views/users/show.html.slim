@@ -1,0 +1,14 @@
+= @user.email
+br
+|tagged pictures:
+br
+- @tagged_images.each do |image|
+  - if image.image.attached?
+    = image_tag image.image
+br
+|favourite pictures:
+br
+- @favourites.each do |favourite|
+  - if favourite.image.attached?
+    = image_tag favourite.image
+

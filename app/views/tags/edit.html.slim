@@ -1,0 +1,6 @@
+= form_with  url: "/edit_tag", method: :post do |form|
+  = form.hidden_field(:image_id, :value => @image.id)
+  = form.hidden_field(:old_tag_id, :value => @tag.id)
+  = form.label :add_tag
+  = form.select :tag_id, @array
+  = form.submit

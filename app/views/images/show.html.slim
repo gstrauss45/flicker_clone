@@ -1,0 +1,9 @@
+- if @image.image.attached?
+= image_tag @image.image
+br
+= @image.title
+br
+= link_to 'edit', edit_image_path
+br
+  = link_to "Destroy", image_path(:iamge_id => @image.id), method: :delete, data: { confirm: "Are you sure?" }, class: "header_delete"
+br

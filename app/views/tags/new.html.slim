@@ -1,0 +1,5 @@
+= form_with  url: "/add_tag", method: :post do |form|
+  = form.hidden_field(:image_id, :value => @image.id)
+  = form.label :add_tag
+  = form.select :tag_id, @array
+  = form.submit

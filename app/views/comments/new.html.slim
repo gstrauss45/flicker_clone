@@ -1,0 +1,5 @@
+=form_with model: @comment do |form|
+    =form.label :comment
+    =form.text_field :comment
+    =form.hidden_field(:image_id, :value => @image.id)
+    =form.submit
